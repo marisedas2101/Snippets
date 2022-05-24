@@ -2,6 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
 
+from MainApp.forms import SnippetForm
 from MainApp.models import Snippet
 
 
@@ -11,8 +12,15 @@ def index_page(request):
 
 
 def add_snippet_page(request):
-    context = {'pagename': 'Добавление нового сниппета'}
-    return render(request, 'pages/add_snippet.html', context)
+    if request.method == 'GET':
+        form = SnippetForm()
+        context = {'pagename': 'Добавление нового сниппета', 'form': form}
+        return render(request, 'pages/add_snippet.html', context)
+    elif request.method == 'POST':
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("list")
 
 
 def snippets_page(request):

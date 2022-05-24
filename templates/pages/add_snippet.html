@@ -12,29 +12,20 @@
     <div class="row">
         <div class="col">
             <form action="" method="post">
+                {% csrf_token %}
                 <div class="form-group row">
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-lg" placeholder="Название сниппета">
+                        {{ form.name }}
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-8">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Язык сниппета
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Python</a>
-                                <a class="dropdown-item" href="#">JavaScript</a>
-                                <a class="dropdown-item" href="#">C++</a>
-                            </div>
-                        </div>
+                        {{ form.lang }}
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
-                        <textarea cols="96" rows="10" placeholder="Код сниппета"></textarea>
+                        {{ form.code }}
                     </div>
                 </div>
                 <div class="form-group row">
