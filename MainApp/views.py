@@ -20,7 +20,11 @@ def add_snippet_page(request):
     elif request.method == 'POST':
         form = SnippetForm(request.POST)
         if form.is_valid():
-            form.save()
+            # commit=False- мы получаем объект snippet, но сохранения в БД не происходит
+            snippet = form.save(commit=False)
+            snippet.user = request.user
+            # а здесь уже происходит сохранение в БД
+            snippet.save()
             return redirect("list")
 
 
@@ -91,3 +95,5 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("home")
+        context = {"pagename": "Регистрация пользователя", "form": form}
+        return render(request, "pages/registration.html", context)
