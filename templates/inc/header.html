@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" width="32" height="32" alt="">
                 PythonBin
             </a>
@@ -29,6 +29,7 @@
                     <input name="password"  type="password" placeholder="password">
                     <button type="submit">login</button>
                 </form>
+                <a href="{% url 'registration' %}">SignUp</a>
             {% endif %}
 
 

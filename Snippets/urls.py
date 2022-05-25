@@ -20,7 +20,7 @@ from django.urls import path
 from MainApp import views
 
 urlpatterns = [
-    path('', views.index_page, name='index'),
+    path('', views.index_page, name='home'),
     path('snippets/add', views.add_snippet_page, name='adding'),
     path('snippets/list', views.snippets_page, name='list'),
     path('snippets/<int:id>', views.snippet_page, name='snippet_page'),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('edit/<int:id>/', views.edit_snippet, name='edit'),
     path('login', views.login_page, name='login'),
     path('logout', views.logout, name='logout'),
+    path('registration', views.register, name='registration'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
