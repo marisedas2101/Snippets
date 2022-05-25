@@ -18,6 +18,7 @@
                        <th scope="col">ID</th>
                        <th scope="col">Название</th>
                        <th scope="col">Дата создания</th>
+                       <th scope="col"></th>
                    </tr>
                    </thead>
                    <tbody>
@@ -26,6 +27,7 @@
                        <td scope="row">{{ sn.pk }}</td>
                        <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a></td>
                        <td>{{ sn.creation_date }}</td>
+                       <td><a href="">Изменить</a> | <a href="{% url 'del' sn.pk %}">Удалить</a></td>
                    </tr>
                    {% endfor %}
                    </tbody>

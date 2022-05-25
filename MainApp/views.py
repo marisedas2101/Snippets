@@ -35,3 +35,12 @@ def snippet_page(request, id):
         return render(request, 'pages/snippet_page.html', context={'snippet': sn})
     except ObjectDoesNotExist:
         raise Http404(f"Сниппета c id={id} не существует")
+
+
+def delete(request, id):
+    try:
+        sn = Snippet.objects.get(id=id)
+        sn.delete()
+        return redirect("list")
+    except ObjectDoesNotExist:
+        return Http404("<h2>Snippet not found</h2>")
