@@ -33,7 +33,7 @@ def snippets_page(request):
 def snippet_page(request, id):
     try:
         sn = Snippet.objects.get(pk=id)
-        return render(request, 'pages/snippet_page.html', context={'snippet': sn})
+        return render(request, 'pages/snippet_page.html', context={'snippet': sn, "pagename": "Детали сниппета"})
     except ObjectDoesNotExist:
         raise Http404(f"Сниппета c id={id} не существует")
 
@@ -73,4 +73,9 @@ def login_page(request):
         else:
             # Return error message
             pass
+    return redirect('index')
+
+
+def logout(request):
+    auth.logout(request)
     return redirect('index')
