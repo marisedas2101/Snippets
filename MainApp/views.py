@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
+from django.contrib import auth
 
 from MainApp.forms import SnippetForm
 from MainApp.models import Snippet
@@ -60,3 +61,16 @@ def edit_snippet(request, id):
             return render(request, "pages/edit.html", {"pagename": "Изменение сниппета", "snippet": snippet, "form": form})
     except ObjectDoesNotExist:
         return Http404("<h2>Snippet not found</h2>")
+
+
+def login_page(request):
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+        else:
+            # Return error message
+            pass
+    return redirect('index')
