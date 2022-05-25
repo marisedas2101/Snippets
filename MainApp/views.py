@@ -44,3 +44,19 @@ def delete(request, id):
         return redirect("list")
     except ObjectDoesNotExist:
         return Http404("<h2>Snippet not found</h2>")
+
+
+def edit_snippet(request, id):
+    try:
+        snippet = Snippet.objects.get(id=id)
+        form = SnippetForm()
+        if request.method == "POST":
+            snippet.name = request.POST.get("name")
+            snippet.code = request.POST.get("code")
+            snippet.lang = request.POST.get("lang")
+            snippet.save()
+            return redirect("/")
+        else:
+            return render(request, "pages/edit.html", {"pagename": "Изменение сниппета", "snippet": snippet, "form": form})
+    except ObjectDoesNotExist:
+        return Http404("<h2>Snippet not found</h2>")
