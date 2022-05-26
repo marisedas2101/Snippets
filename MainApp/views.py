@@ -83,12 +83,12 @@ def login_page(request):
         else:
             # Return error message
             pass
-    return redirect('home')
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def register(request):
