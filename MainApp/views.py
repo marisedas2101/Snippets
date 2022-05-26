@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
@@ -48,6 +49,7 @@ def snippet_page(request, id):
         raise Http404(f"Сниппета c id={id} не существует")
 
 
+@login_required()
 def delete(request, id):
     try:
         sn = Snippet.objects.get(id=id)
@@ -57,6 +59,7 @@ def delete(request, id):
         return Http404("<h2>Snippet not found</h2>")
 
 
+@login_required()
 def edit_snippet(request, id):
     try:
         snippet = Snippet.objects.get(id=id)
