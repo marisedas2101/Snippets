@@ -18,10 +18,11 @@
                 </ul>
             </div>
             {% if request.user.is_authenticated %}
-              <span style="color: white">
+                <a class="btn btn-outline-secondary" type="submit" href="?filter" name="get_my_snippets">Мои сниппеты</a>
+                <span style="color: white">
                   Welcome, {{request.user.username }}
                     <a href="{% url 'logout' %}">logout</a>
-              </span>
+                </span>
             {% else %}
                 <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
