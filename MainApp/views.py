@@ -4,7 +4,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib import auth
 
-from MainApp.forms import SnippetForm, UserRegistrationForm
+from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 from MainApp.models import Snippet
 
 
@@ -44,7 +44,9 @@ def snippets_page(request):
 def snippet_page(request, id):
     try:
         sn = Snippet.objects.get(pk=id)
-        return render(request, 'pages/snippet_page.html', context={'snippet': sn, "pagename": "Детали сниппета"})
+        form = CommentForm()
+        context = {'snippet': sn, "pagename": "Детали сниппета", "comment_form": form}
+        return render(request, 'pages/snippet_page.html', context)
     except ObjectDoesNotExist:
         raise Http404(f"Сниппета c id={id} не существует")
 
@@ -98,7 +100,7 @@ def register(request):
     if request.method == "GET":
         form = UserRegistrationForm()
         context = {"pagename": "Регистрация пользователя", "form": form}
-        return render(request, 'pages/registration.html', context)
+        return render(request, 'pages/snippet_page.html', context)
     elif request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -106,3 +108,16 @@ def register(request):
             return redirect("home")
         context = {"pagename": "Регистрация пользователя", "form": form}
         return render(request, "pages/registration.html", context)
+
+
+def comment_add(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        snippet_id = request.POST.get('snippet_id')
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.snippet = Snippet.objects.get(id=snippet_id)
+            comment.save()
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+    raise Http404
