@@ -29,7 +29,11 @@
                        <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a></td>
                        <td>{{ sn.user }}</td>
                        <td>{{ sn.creation_date }}</td>
-                       <td><a href="{% url 'edit' sn.pk %}">Изменить</a> | <a href="{% url 'del' sn.pk %}">Удалить</a></td>
+                       {% if request.user.is_authenticated and request.user == sn.user %}
+                           <td><a href="{% url 'edit' sn.pk %}">Изменить</a> | <a href="{% url 'del' sn.pk %}">Удалить</a></td>
+                       {% else %}
+                        <td></td>
+                       {% endif %}
                    </tr>
                    {% endfor %}
                    </tbody>
