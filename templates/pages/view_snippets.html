@@ -1,49 +1,38 @@
 {% extends 'base.html' %}
-{% load my_tags %}
+{% load static %}
 
 {% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h1>{{ pagename }}</h1>
-            <hr>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div class="col">
-               <table class="table table-striped">
-                   <thead class="thead-dark">
-                   <tr>
-                       <th scope="col">ID</th>
-                       <th scope="col">Название</th>
-                       <th scope="col">Автор</th>
-                       <th scope="col">Дата создания</th>
-                       <th scope="col"></th>
-                   </tr>
-                   </thead>
-                   <tbody>
-                   {% for sn in snippets %}
-                   <tr>
-                       <td scope="row">{{ sn.pk }}</td>
-                       <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a></td>
-                       <td>{{ sn.user|is_empty:"Аноним" }}</td>
-                       <td>{{ sn.creation_date }}</td>
-                       {% if request.user == sn.user %}
-                           <td><a href="{% url 'edit' sn.pk %}">Изменить</a> | <a href="{% url 'del' sn.pk %}">Удалить</a></td>
-                       {% else %}
-                        <td></td>
-                       {% endif %}
-                   </tr>
-                   {% endfor %}
-                   </tbody>
-               </table>
-               <div align="right">
-                   <i style="color: gray;">Всего сниппетов: {{ snippets|length }}</i>
-               </div>
-            </div>
-        </div>
-    </div>
+<link rel="stylesheet" href="{% static 'css/style_view_snippets.css' %}">
+<div class="head">
+    <h1>{{ pagename }}</h1>
+    <hr>
+</div>
+<div>
+    <table class="resp-tab">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Дата создания</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sn in snippets %}
+           <tr>
+               <td>{{ sn.pk }}</td>
+               <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a></td>
+               <td>{{ sn.user }}</td>
+               <td>{{ sn.creation_date }}</td>
+               {% if request.user == sn.user %}
+                    <td><a href="{% url 'edit' sn.pk %}">Изменить</a> | <a href="{% url 'del' sn.pk %}">Удалить</a></td>
+               {% else %}
+                    <td></td>
+               {% endif %}
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
 </div>
 {% endblock %}
