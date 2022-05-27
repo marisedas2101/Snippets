@@ -9,8 +9,9 @@
     max-width: 70%;
 }
 .resp-tab th, .resp-tab td {
+    text-align:center;
     padding: 10px 20px;
-    font-size: 13px;
+    font-size: 14px;
     border: none;
     font-family: Arial, sans-serif;
     border: 1px solid rgb(52, 58, 64);
@@ -31,7 +32,7 @@
     background: #337AB7;
     color: #FFF;
     display: none;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
     font-family: Verdana, sans-serif;
     text-transform: uppercase;
