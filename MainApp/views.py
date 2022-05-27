@@ -100,7 +100,7 @@ def register(request):
     if request.method == "GET":
         form = UserRegistrationForm()
         context = {"pagename": "Регистрация пользователя", "form": form}
-        return render(request, 'pages/snippet_page.html', context)
+        return render(request, 'pages/registration.html', context)
     elif request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
