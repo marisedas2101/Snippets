@@ -1,39 +1,27 @@
 {% load static %}
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" width="32" height="32" alt="">
-                PythonBin
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="form-inline"><a class="btn btn-outline-secondary" href="{% url 'adding' %}">Добавить сниппет</a></li>
-                    <li class="form-inline"><a class="btn btn-outline-info" href="{% url 'list' %}">Посмотреть
-                        сниппеты</a></li>
-                </ul>
-            </div>
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<nav>
+    <div class="menu">
+        <div class="left_side">
+            <a class="logo" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" width="32" height="32" alt="">PythonBin</a>
+            <a class="my_btn" href="{% url 'adding' %}">Добавить сниппет</a>
+            <a class="my_btn" href="{% url 'list' %}">Просмотреть сниппеты</a>
+        </div>
+
+        <div class="right_side">
             {% if request.user.is_authenticated %}
-                <a class="btn btn-outline-secondary" type="submit" href="?filter" name="get_my_snippets">Мои сниппеты</a>
-                <span style="color: white">
-                  Welcome, {{request.user.username }}
-                    <a href="{% url 'logout' %}">logout</a>
-                </span>
+                <a class="my_btn" type="submit" href="?filter" name="get_my_snippets">Мои сниппеты</a>
+                <span> Welcome, {{request.user.username }}!</span>
+                <a class="my_btn" href="{% url 'logout' %}">logout</a>
             {% else %}
                 <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
                     <input name="username"  type="text" placeholder="username">
                     <input name="password"  type="password" placeholder="password">
-                    <button type="submit">login</button>
+                    <button class="my_btn" type="submit">login</button>
                 </form>
-                <a href="{% url 'registration' %}">SignUp</a>
+                <a class="my_btn" href="{% url 'registration' %}">SignUp</a>
             {% endif %}
-
-
         </div>
-    </nav>
-</header>
+    </div>
+</nav>

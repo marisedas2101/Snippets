@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+nav{
+    background-color: rgb(52, 58, 64);
+}
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px 10px;
+    align-items: center;
+}
+.menu .left_side{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    color: white;
+    align-items: center;
+}
+.menu .right_side{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    color: white;
+    align-items: center;
+}
+nav a {
+    color: white;
+}
+.my_btn{
+    border: 1px solid;
+    border-color: #337AB7;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 5px;
+    margin-left: 5px;
+}
+.logo{
+    color: white;
+    margin-right: 20px;
+    padding-top: 4px;
+}
+nav span{
+    color: white;
+    padding: 5px 5px;
+}
+nav button{
+    background: rgb(52, 58, 64);
+    color: #fff;
+}
