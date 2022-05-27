@@ -1,9 +1,7 @@
-Django
+Django==3.1
+django-extensions==3.0.5
+dj-database-url==0.5.0
 ipython
-django_extensions
 gunicorn
 django-heroku
 psycopg2-binary
-
-dj-config-url~=0.1.1
-dj-database-url~=0.5.0
