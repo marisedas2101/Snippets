@@ -1,3 +1,9 @@
 from django.contrib import admin
+from MainApp.models import Snippet
 
-# Register your models here.
+
+class SnippetAdmin(admin.ModelAdmin):
+    list_display = ('name', 'lang', 'code', 'creation_date', 'user')
+
+
+admin.site.register(Snippet, SnippetAdmin)

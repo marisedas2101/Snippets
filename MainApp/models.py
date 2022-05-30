@@ -14,9 +14,15 @@ class Snippet(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name="snippets")
 
+    class Meta:
+        ordering = ['-creation_date']
+
 
 class Comment(models.Model):
     text = models.TextField(max_length=1000)
     creation_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='comments')
     snippet = models.ForeignKey(to=Snippet, on_delete=models.CASCADE, related_name='comments')
+
+    class Meta:
+        ordering = ['-creation_date']

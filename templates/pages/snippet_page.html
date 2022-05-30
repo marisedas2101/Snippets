@@ -36,18 +36,22 @@
         </fieldset>
     </div>
     <div class="row">
-        <table>
-           <tr>
-               <th>Автор</th>
-               <th>Комментарий</th>
-           </tr>
-           {% for comment in snippet.comments.all %}
-           <tr>
-               <td>{{comment.author.username}}</td>
-               <td>{{comment.text}}</td>
-           </tr>
-           {% endfor %}
-        </table>
+        <div class="col">
+            <table>
+               <tr>
+                   <th>Автор</th>
+                   <th>Дата</th>
+                   <th>Комментарий</th>
+               </tr>
+               {% for comment in snippet.comments.all %}
+               <tr>
+                   <td>{{comment.author.username}}</td>
+                   <td>{{comment.creation_date}}</td>
+                   <td>{{comment.text}}</td>
+               </tr>
+               {% endfor %}
+            </table>
+        </div>
     </div>
     <div class="row">
         <div class="col">
