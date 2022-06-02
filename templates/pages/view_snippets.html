@@ -31,7 +31,7 @@
                 </a>
                 {% endif %}
             </td>
-            <td>{{ sn.user }}</td>
+            <td>{{ sn.user|default:"Anonymous" }}</td>
             <td>{{ sn.creation_date }}</td>
         </tr>
         {% endfor %}
