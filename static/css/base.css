@@ -1,0 +1,29 @@
+
+main > .container {
+    padding: 60px 15px 0;
+}
+
+.footer {
+    background-color: rgb(52, 58, 64);
+    color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer > .container {
+    padding: 20px 15px;
+}
+
+code {
+    font-size: 80%;
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #faf7f7;
+}

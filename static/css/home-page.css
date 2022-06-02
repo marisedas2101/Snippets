@@ -1,0 +1,53 @@
+* {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+.head, .info{
+    margin-top: 5%;
+    text-align: center;
+}
+.add-sn{
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    margin-left: 42%;
+    margin-right: 42%;
+    padding: 10px 20px;
+    background-color: rgb(52, 58, 64);
+}
+.add-sn a {
+    color: white;
+}
+form {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.form-row {
+  display: flex;
+  justify-content: center;
+  padding: .5em;
+}
+.my-form button {
+  float: left;
+  width: 20%;
+  padding: 5px;
+  background: #0b7dda;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+}
+.my-form button:hover {
+  background: #0b7dda;
+}
+/* Clear floats */
+.my-form::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.search-info{
+    margin: 0 auto;
+}

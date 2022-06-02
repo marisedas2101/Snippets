@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 nav{
     background-color: rgb(52, 58, 64);
@@ -42,7 +43,6 @@ nav a {
 }
 .logo{
     color: white;
-    margin-right: 20px;
     padding-top: 4px;
 }
 nav span{
