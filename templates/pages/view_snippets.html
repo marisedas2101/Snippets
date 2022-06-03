@@ -7,34 +7,34 @@
     <h1>{{ pagename }}</h1>
     <hr>
 </div>
-<div>
+<div сlass="table-snippets">
     <table class="resp-tab">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>Название</th>
-            <th>Автор</th>
-            <th>Дата создания</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Дата создания</th>
+            </tr>
         </thead>
         <tbody>
-        {% for sn in snippets %}
-        <tr>
-            <td>{{ sn.pk }}</td>
-            <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a>
-                {% if request.user == sn.user %}
-                <a href="{% url 'del' sn.pk %}">
-                    <img class="my-icon" src="{% static 'images/trash.png' %}" width="12" height="12" alt="">
-                </a> |
-                <a href="{% url 'edit' sn.pk %}">
-                    <img class="my-icon"  src="{% static 'images/edit-icon.png' %}" width="12" height="12" alt="">
-                </a>
-                {% endif %}
-            </td>
-            <td>{{ sn.user|default:"Anonymous" }}</td>
-            <td>{{ sn.creation_date }}</td>
-        </tr>
-        {% endfor %}
+            {% for sn in snippets %}
+            <tr>
+                <td>{{ sn.pk }}</td>
+                <td><a href="{% url 'snippet_page' sn.pk %}">{{ sn.name }}</a>
+                    {% if request.user == sn.user %}
+                    <a href="{% url 'del' sn.pk %}">
+                        <img class="my-icon" src="{% static 'images/trash.png' %}" width="12" height="12" alt="">
+                    </a> |
+                    <a href="{% url 'edit' sn.pk %}">
+                        <img class="my-icon"  src="{% static 'images/edit-icon.png' %}" width="12" height="12" alt="">
+                    </a>
+                    {% endif %}
+                </td>
+                <td>{{ sn.user|default:"Anonymous" }}</td>
+                <td>{{ sn.creation_date }}</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

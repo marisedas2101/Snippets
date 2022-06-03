@@ -1,11 +1,14 @@
+.table-snippets {
+    display: flex;
+    justify-content: center;
+}
 .resp-tab {
     border-radius: 5px;
     font-weight: normal;
     border: none;
     border-collapse: collapse;
-    margin-top: 7%;
-    margin-left: 38%;
-    max-width: 40%;
+    margin: 3% auto;
+    width: 50%;
 }
 .resp-tab th, .resp-tab td {
     text-align:center;
