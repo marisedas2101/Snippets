@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>{{ pagename }}</h1>
-            <hr>
-        </div>
-    </div>
+<link rel="stylesheet" href="{% static 'css/add_page.css' %}">
+
+<div class="form">
 
     {% include 'inc/inc-form.html' %}
 

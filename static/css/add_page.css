@@ -1,0 +1,42 @@
+.form {
+    align-items: center;
+    display: flex;
+    margin-top: 5%;
+    justify-content: center;
+
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(52, 58, 64);
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 60%;
+    padding: 30px;
+    width: 35%;
+ }
+.title {
+  color: white;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.input-container {
+  position: relative;
+  margin-bottom: 5px;
+  min-width: 100%;
+}
+.input-container > input, select, textarea {
+  background-color: #eee;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: rgb(52, 58, 64);
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
