@@ -15,13 +15,15 @@
                 <span> Welcome, {{request.user.username }}!</span>
                 <a class="my_btn" href="{% url 'logout' %}">logout</a>
             {% else %}
-                <form method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    <input name="username"  type="text" placeholder="username">
-                    <input name="password"  type="password" placeholder="password">
-                    <button class="my_btn" type="submit">login</button>
-                </form>
-                <a class="my_btn" href="{% url 'registration' %}">SignUp</a>
+                <div class="registr">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <input name="username"  type="text" placeholder="username">
+                        <input name="password"  type="password" placeholder="password">
+                        <button class="my_btn" type="submit">login</button>
+                    </form>
+                    <a class="my_btn" href="{% url 'registration' %}">SignUp</a>
+                </div>
             {% endif %}
         </div>
     </div>

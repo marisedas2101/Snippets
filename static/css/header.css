@@ -27,6 +27,7 @@ nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    flex-direction: row;
     color: white;
     align-items: center;
 }
@@ -40,6 +41,7 @@ nav a {
     color: white;
     padding: 5px 5px;
     margin-left: 5px;
+    font-size: 18px;
 }
 .logo{
     color: white;
@@ -52,4 +54,14 @@ nav span{
 nav button{
     background: rgb(52, 58, 64);
     color: #fff;
+}
+.registr > form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.registr{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
