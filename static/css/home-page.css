@@ -6,6 +6,9 @@
     margin-top: 5%;
     text-align: center;
 }
+.head > h1{
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
 .add-sn{
     text-align: center;
     border: 1px solid;
