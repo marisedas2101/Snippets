@@ -9,8 +9,12 @@ from MainApp.models import Snippet
 
 
 def index_page(request):
-    context = {'pagename': 'PythonBin'}
-    return render(request, 'pages/index.html', context)
+    if request.method == 'POST':
+        num_snippet = request.POST.get('number')
+        return snippet_page(request, num_snippet)
+    if request.method == 'GET':
+        context = {'pagename': 'PythonBin'}
+        return render(request, 'pages/index.html', context)
 
 
 def add_snippet_page(request):
