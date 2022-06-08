@@ -50,6 +50,7 @@ nav a {
 nav span{
     color: white;
     padding: 5px 5px;
+    font-size: 18px;
 }
 nav button{
     background: rgb(52, 58, 64);
