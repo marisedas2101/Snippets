@@ -1,0 +1,33 @@
+.container {
+    max-width: 70%;
+    width: 70%;
+    min-height: 100%;
+    font-size: 20px;
+    margin-left: 15%;
+    position: relative;
+}
+.head {
+    text-align: center;
+}
+.info_model{
+    display: flex;
+    flex_direction: row;
+    justify_content: space-between;
+    padding: 10px;
+}
+.info_model > span {
+    padding: 10px;
+}
+fieldset{
+    height: 60%;
+    margin: 30px 0px;
+}
+.comments {
+    margin: 30px 0px;
+}
+.sn-code {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    height: 10%;
+    font-size: 18px;
+}

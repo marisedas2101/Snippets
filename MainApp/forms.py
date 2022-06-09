@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, CharField, PasswordInput, ValidationError
+from django.forms import ModelForm, TextInput, CharField, PasswordInput, ValidationError, Textarea
 from MainApp.models import Snippet, Comment
 from django.contrib.auth.models import User
 
@@ -41,3 +41,6 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ["text"]
+
+        widgets = {
+            'text': Textarea(attrs={'placeholder': 'Введите комментарий'})}
