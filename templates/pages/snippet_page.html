@@ -4,13 +4,11 @@
 
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/snippet_details.css' %}">
-<div class="container">
-    <div class="head">
+ <div class="head">
         <h1>{{ pagename }}</h1>
         <hr>
-    </div>
-
-
+ </div>
+<div class="container-snip">
     <fieldset disabled>
         <div class="from_db">
             <div class="info_model"><div><span>Название: </span><b>{{ snippet.name }}</b></div></div>
