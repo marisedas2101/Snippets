@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_tags %}
 
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/snippet_details.css' %}">
@@ -18,9 +19,9 @@
         </div>
         <hr>
         <div class="sn-code">
-            <p>
-                {{ snippet.code }}
-            </p>
+            <pre><code>
+                <i>{{ snippet.code|linebreaksbr }}</i>
+            </code></pre>
         </div>
     </fieldset>
     <div class="comments">
