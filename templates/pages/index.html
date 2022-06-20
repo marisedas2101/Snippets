@@ -4,6 +4,7 @@
 {% block main %}
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/home-page.css' %}">
+<link rel="stylesheet" href="{% static 'css/style_view_snippets.css' %}">
 <div class="container">
     <div class="head">
         <h1>{{ pagename }}</h1>
@@ -33,5 +34,12 @@
             </div>
         </form>
     </div>
+    {% if snippets and method == 'post' %}
+        <div class="sn-row">
+            {% include 'inc/table_sn.html' %}
+        </div>
+    {% elif not snippets and method == 'post' %}
+        <div class="sn-row">Cниппета с таким id не существует! </div>
+    {% endif %}
 </div>
 {% endblock %}

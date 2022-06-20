@@ -24,12 +24,15 @@ class SnippetList(ListView):
 
 
 def index_page(request):
+    snippets = None
+    method = 'get'
     if request.method == 'POST':
         num_snippet = request.POST.get('number')
-        return snippet_page(request, num_snippet)
-    if request.method == 'GET':
-        context = {'pagename': 'PythonBin'}
-        return render(request, 'pages/index.html', context)
+        snippets = Snippet.objects.filter(pk=num_snippet)
+        method = 'post'
+    context = {'pagename': 'PythonBin', 'snippets': snippets, "method": method}
+    return render(request, 'pages/index.html', context)
+
 
 
 def add_snippet_page(request):
