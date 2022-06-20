@@ -3,9 +3,24 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.views.generic.list import ListView
 
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 from MainApp.models import Snippet
+
+
+class SnippetList(ListView):
+
+    model = Snippet
+    template_name = 'pages/view_snippets.html'
+    context_object_name = 'snippets'
+    extra_context = {'pagename': 'Просмотр сниппетов'}
+
+    def get_queryset(self):
+        if 'filter' in self.request.GET:
+            filter_val = self.model.objects.filter(user=self.request.user)
+            return filter_val
+        return self.model.objects.all()
 
 
 def index_page(request):
@@ -33,16 +48,16 @@ def add_snippet_page(request):
             return redirect("list")
 
 
-def snippets_page(request):
-    template = 'pages/view_snippets.html'
-    if request.method == "GET":
-        snippets = Snippet.objects.all()
-        context = {'pagename': 'Просмотр сниппетов', 'snippets': snippets}
-        if 'filter' in request.GET:
-            snippets = Snippet.objects.filter(user=request.user)
-            context = {'pagename': 'Просмотр сниппетов', 'snippets': snippets}
-            return render(request, template, context)
-        return render(request, template, context)
+# def snippets_page(request):
+#     template = 'pages/view_snippets.html'
+#     if request.method == "GET":
+#         snippets = Snippet.objects.all()
+#         context = {'pagename': 'Просмотр сниппетов', 'snippets': snippets}
+#         if 'filter' in request.GET:
+#             snippets = Snippet.objects.filter(user=request.user)
+#             context = {'pagename': 'Просмотр сниппетов', 'snippets': snippets}
+#             return render(request, template, context)
+#         return render(request, template, context)
 
 
 def snippet_page(request, id):

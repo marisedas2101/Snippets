@@ -11,7 +11,7 @@
 <div class="container-snip">
     <fieldset disabled>
         <div class="from_db">
-            <div class="info_model"><div><span>Название: </span><b>{{ snippet.name }}</b></div></div>
+            <div class="info_model"><div><span>Название: </span><b>{{ snippet.name|upper }}</b></div></div>
             <div class="info_model"><div><span>Автор: </span><b>{{ snippet.user }}</b></div></div>
             <div class="info_model"><div><span>Дата создания: </span><b>{{ snippet.creation_date }}</b></div></div>
         </div>
