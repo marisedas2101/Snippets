@@ -19,14 +19,14 @@ from django.contrib import admin
 from django.urls import path
 
 from MainApp import views
-from MainApp.views import SnippetList
+from MainApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page, name='home'),
     path('snippets/add', views.add_snippet_page, name='adding'),
     path('snippets/list', SnippetList.as_view(), name='list'),
-    path('snippets/<int:id>', views.snippet_page, name='snippet_page'),
+    path('snippets/<int:id>', SnippetDetails.as_view(), name='snippet_page'),
     path('delete/<int:id>/', views.delete, name='del'),
     path('edit/<int:id>/', views.edit_snippet, name='edit'),
     path('login', views.login_page, name='login'),

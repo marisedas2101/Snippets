@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from django.views.generic.list import ListView
+from django.views.generic import ListView, DetailView
 
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 from MainApp.models import Snippet
@@ -23,6 +23,23 @@ class SnippetList(ListView):
         return self.model.objects.all()
 
 
+class SnippetDetails(DetailView):
+    model = Snippet
+    template_name = 'pages/snippet_page.html'
+    context_object_name = 'snippet'
+    pk_url_kwarg = 'id'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["pagename"] = "Детали сниппета"
+        context["comment_form"] = CommentForm()
+        return context
+
+    def get_queryset(self):
+        sn = self.model.objects.filter(pk=self.kwargs['id'])
+        return sn
+
+
 def index_page(request):
     snippets = None
     method = 'get'
@@ -32,7 +49,6 @@ def index_page(request):
         method = 'post'
     context = {'pagename': 'PythonBin', 'snippets': snippets, "method": method}
     return render(request, 'pages/index.html', context)
-
 
 
 def add_snippet_page(request):
@@ -63,14 +79,14 @@ def add_snippet_page(request):
 #         return render(request, template, context)
 
 
-def snippet_page(request, id):
-    try:
-        sn = Snippet.objects.get(pk=id)
-        form = CommentForm()
-        context = {'snippet': sn, "pagename": "Детали сниппета", "comment_form": form}
-        return render(request, 'pages/snippet_page.html', context)
-    except ObjectDoesNotExist:
-        raise Http404(f"Сниппета c id={id} не существует")
+# def snippet_page(request, id):
+#     try:
+#         sn = Snippet.objects.get(pk=id)
+#         form = CommentForm()
+#         context = {'snippet': sn, "pagename": "Детали сниппета", "comment_form": form}
+#         return render(request, 'pages/snippet_page.html', context)
+#     except ObjectDoesNotExist:
+#         raise Http404(f"Сниппета c id={id} не существует")
 
 
 @login_required()
