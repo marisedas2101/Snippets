@@ -3,7 +3,10 @@
 
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/add_page.css' %}">
-
+<div class="head">
+    <h1>{{ pagename }}</h1>
+    <hr>
+</div>
 <div class="form">
 
     {% include 'inc/inc-form.html' %}

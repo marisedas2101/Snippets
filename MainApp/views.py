@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 from MainApp.models import Snippet
@@ -99,21 +101,33 @@ def delete(request, id):
         return Http404("<h2>Snippet not found</h2>")
 
 
-@login_required()
-def edit_snippet(request, id):
-    try:
-        snippet = Snippet.objects.get(id=id)
-        form = SnippetForm()
-        if request.method == "POST":
-            snippet.name = request.POST.get("name")
-            snippet.code = request.POST.get("code")
-            snippet.lang = request.POST.get("lang")
-            snippet.save()
-            return redirect("/")
-        else:
-            return render(request, "pages/edit.html", {"pagename": "Изменение сниппета", "snippet": snippet, "form": form})
-    except ObjectDoesNotExist:
-        return Http404("<h2>Snippet not found</h2>")
+class SnippetUpdateView(LoginRequiredMixin, UpdateView):
+    model = Snippet
+    fields = ['name', 'code', 'lang']
+    template_name = 'pages/edit.html'
+    success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super(SnippetUpdateView, self).get_context_data(**kwargs)
+        context['pagename'] = 'Изменение сниппета'
+        return context
+
+
+# @login_required()
+# def edit_snippet(request, id):
+#     try:
+#         snippet = Snippet.objects.get(id=id)
+#         form = SnippetForm()
+#         if request.method == "POST":
+#             snippet.name = request.POST.get("name")
+#             snippet.code = request.POST.get("code")
+#             snippet.lang = request.POST.get("lang")
+#             snippet.save()
+#             return redirect("/")
+#         else:
+#             return render(request, "pages/edit.html", {"pagename": "Изменение сниппета", "snippet": snippet, "form": form})
+#     except ObjectDoesNotExist:
+#         return Http404("<h2>Snippet not found</h2>")
 
 
 def login_page(request):
