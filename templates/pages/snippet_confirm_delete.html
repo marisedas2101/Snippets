@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/delete.css' %}">
+<div class="head">
+    <h1>{{ pagename }}</h1>
+    <hr>
+</div>
+<div class="delete_form">
+    <form action="" method="post">
+        {% csrf_token %}
+        Вы действительно хотите удалить сниппет?
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input class="delete_btn" type="submit" value="Submit" />
+
+    </form>
+</div>
+{% endblock %}

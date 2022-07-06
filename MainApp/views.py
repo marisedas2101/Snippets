@@ -42,6 +42,29 @@ class SnippetDetails(DetailView):
         return sn
 
 
+class SnippetUpdateView(LoginRequiredMixin, UpdateView):
+    model = Snippet
+    fields = ['name', 'code', 'lang']
+    template_name = 'pages/edit.html'
+    success_url = reverse_lazy('list')
+
+    def get_context_data(self, **kwargs):
+        context = super(SnippetUpdateView, self).get_context_data(**kwargs)
+        context['pagename'] = 'Изменение сниппета'
+        return context
+
+
+class SnippetDeleteView(LoginRequiredMixin, DeleteView):
+    model = Snippet
+    success_url = reverse_lazy('list')
+    template_name = 'pages/snippet_confirm_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SnippetDeleteView, self).get_context_data(**kwargs)
+        context['pagename'] = 'Удаление сниппета'
+        return context
+
+
 def index_page(request):
     snippets = None
     method = 'get'
@@ -91,26 +114,14 @@ def add_snippet_page(request):
 #         raise Http404(f"Сниппета c id={id} не существует")
 
 
-@login_required()
-def delete(request, id):
-    try:
-        sn = Snippet.objects.get(id=id)
-        sn.delete()
-        return redirect("list")
-    except ObjectDoesNotExist:
-        return Http404("<h2>Snippet not found</h2>")
-
-
-class SnippetUpdateView(LoginRequiredMixin, UpdateView):
-    model = Snippet
-    fields = ['name', 'code', 'lang']
-    template_name = 'pages/edit.html'
-    success_url = '/'
-
-    def get_context_data(self, **kwargs):
-        context = super(SnippetUpdateView, self).get_context_data(**kwargs)
-        context['pagename'] = 'Изменение сниппета'
-        return context
+# @login_required()
+# def delete(request, id):
+#     try:
+#         sn = Snippet.objects.get(id=id)
+#         sn.delete()
+#         return redirect("list")
+#     except ObjectDoesNotExist:
+#         return Http404("<h2>Snippet not found</h2>")
 
 
 # @login_required()
