@@ -23,20 +23,23 @@
         </div>
     </fieldset>
     <div class="comments">
-        <table>
-
-           {% for comment in snippet.comments.all %}
-            <tr>
-               <th>Автор</th>
-               <th>Дата</th>
-               <th>Комментарий</th>
-           </tr>
-           <tr>
-               <td>{{comment.author.username}}</td>
-               <td>{{comment.creation_date}}</td>
-               <td>{{comment.text}}</td>
-           </tr>
-           {% endfor %}
+        <table class="com-table">
+            {% if snippet.comments.all %}
+                <thead>
+                    <tr>
+                       <th>Автор</th>
+                       <th>Дата</th>
+                       <th>Комментарий</th>
+                   </tr>
+                </thead>
+               {% for comment in snippet.comments.all %}
+               <tr>
+                   <td>{{comment.author.username}}</td>
+                   <td>{{comment.creation_date}}</td>
+                   <td>{{comment.text}}</td>
+               </tr>
+               {% endfor %}
+            {% endif %}
         </table>
 
         <form action="{% url 'comment_add' %}" method="POST">

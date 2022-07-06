@@ -32,9 +32,36 @@ fieldset{
     border: 1px solid;
     border-radius: 5px;
 }
-.comments {
+
+.com-table {
     margin: 30px 0px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+.com-table thead tr {
+    background-color: rgb(52, 58, 64);
+    color: #ffffff;
+    text-align: left;
+    border-radius: 20px;
+}
+.com-table th,
+.com-table td {
+    padding: 12px 15px;
+}
+.com-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.com-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.com-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(52, 58, 64);
+}
+
 .sn-code {
     border: 1px solid #ced4da;
     border-radius: 5px;

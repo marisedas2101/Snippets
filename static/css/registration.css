@@ -1,0 +1,32 @@
+.head{
+    margin-top: 5%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.form-reg {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 12px;
+    border: 1px solid;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.reg th {
+    text-align: left; /* Выравнивание по левому краю */
+    padding: 3px;
+}
+.reg_btn {
+    margin-top: 15px;
+    width: 20%;
+    padding: 5px;
+    background-color: rgb(52, 58, 64);
+    border-radius: 12px;
+    border: 0;
+    color: white;
+}
