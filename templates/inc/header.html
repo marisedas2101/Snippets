@@ -11,7 +11,7 @@
 
         <div class="right_side">
             {% if request.user.is_authenticated %}
-                <a class="my_btn" type="submit" href="?filter" name="get_my_snippets">Мои сниппеты</a>
+                <a class="my_btn" type="submit" href="mysnippets" name="get_my_snippets">Мои сниппеты</a>
                 <span> Welcome, {{request.user.username }}!</span>
                 <a class="my_btn" href="{% url 'logout' %}">logout</a>
             {% else %}

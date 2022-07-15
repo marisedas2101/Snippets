@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.index_page, name='home'),
     path('snippets/add', views.add_snippet_page, name='adding'),
     path('snippets/list', SnippetList.as_view(), name='list'),
+    path('snippets/mysnippets', MySnippetList.as_view(), name='mysnippets'),
     path('snippets/<int:id>', SnippetDetails.as_view(), name='snippet_page'),
     path('<int:pk>/delete', SnippetDeleteView.as_view(), name='del'),
     # path('delete/<int:id>/', views.delete, name='del'),

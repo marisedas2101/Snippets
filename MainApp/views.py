@@ -18,11 +18,16 @@ class SnippetList(ListView):
     context_object_name = 'snippets'
     extra_context = {'pagename': 'Просмотр сниппетов'}
 
+
+class MySnippetList(ListView):
+    model = Snippet
+    template_name = 'pages/view_snippets.html'
+    context_object_name = 'snippets'
+    extra_context = {'pagename': 'Просмотр сниппетов'}
+
     def get_queryset(self):
-        if 'filter' in self.request.GET:
-            filter_val = self.model.objects.filter(user=self.request.user)
-            return filter_val
-        return self.model.objects.all()
+        filter_val = self.model.objects.filter(user=self.request.user)
+        return filter_val
 
 
 class SnippetDetails(DetailView):
@@ -156,7 +161,8 @@ def login_page(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    # return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect("list")
 
 
 def register(request):
