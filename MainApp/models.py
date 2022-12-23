@@ -6,6 +6,8 @@ LANGS = [
     ("js", "JavaScript"),
     ("cpp", "C++")]
 
+# а good practice is to add method __str__ with text visualization of model
+
 
 class Snippet(models.Model):
     name = models.CharField(max_length=100)
